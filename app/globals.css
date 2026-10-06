@@ -1,26 +1,1770 @@
-@import "tailwindcss";
+@import url('https\://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap');
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+
+  --cream: #f5efe6;
+
+  --cream-light: #faf7f2;
+
+  --cream-dark: #e8dccb;
+
+  --brown: #604b3d;
+
+  --brown-dark: #30231d;
+
+  --brown-light: #806f63;
+
+  --gold: #aa8963;
+
+  --gold-light: #d4c1a8;
+
+  --border: #d9ccbd;
+
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+
+  box-sizing: border-box;
+
+  margin: 0;
+
+  padding: 0;
+
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+
+  scroll-behavior: smooth;
+
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+
+  background: #ddd8d0;
+
+  color: var(--brown-dark);
+
+  font-family: "Montserrat", sans-serif;
+
+  font-weight: 400;
+
+}
+
+/* =========================================
+
+   MAIN
+
+========================================= */
+
+.main-content {
+
+  position: relative;
+
+  width: 100%;
+
+  max-width: 520px;
+
+  margin: 0 auto;
+
+  background: var(--cream-light);
+
+  overflow: hidden;
+
+}
+
+.main-content.is-locked {
+
+  display: none;
+
+}
+
+section {
+
+  position: relative;
+
+  width: 100%;
+
+  padding: 85px 42px;
+
+}
+
+section > h2 {
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-weight: 400;
+
+  color: var(--brown-dark);
+
+}
+
+/* =========================================
+
+   OPENING
+
+========================================= */
+
+.opening {
+
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 9999;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-height: 100vh;
+
+  background:
+
+    linear-gradient(
+
+      to bottom,
+
+      rgba(47, 34, 27, 0.18),
+
+      rgba(32, 23, 19, 0.88)
+
+    ),
+
+    url("/images/hero.jpg") center / cover no-repeat;
+
+}
+
+.opening::after {
+
+  content: "";
+
+  position: absolute;
+
+  inset: 4px;
+
+  border: 1px solid rgba(255,255,255,.35);
+
+  pointer-events: none;
+
+}
+
+.opening-inner {
+
+  position: relative;
+
+  z-index: 2;
+
+  width: min(474px, calc(100vw - 40px));
+
+  min-height: 90vh;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+
+  color: white;
+
+}
+
+.opening .eyebrow {
+
+  color: #d1b48e;
+
+}
+
+.opening h1 {
+
+  margin-top: 22px;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 64px;
+
+  font-weight: 300;
+
+  line-height: .78;
+
+  letter-spacing: -2px;
+
+}
+
+.opening h1 span {
+
+  display: block;
+
+  margin: 12px 0;
+
+  font-size: 29px;
+
+  line-height: 1;
+
+  letter-spacing: 0;
+
+}
+
+.opening-line {
+
+  width: 50px;
+
+  height: 1px;
+
+  margin: 35px 0 22px;
+
+  background: rgba(255,255,255,.65);
+
+}
+
+.opening-date {
+
+  font-size: 10px;
+
+  letter-spacing: 5px;
+
+  text-transform: uppercase;
+
+}
+
+.guest-label {
+
+  margin-top: 2px;
+
+  font-size: 8px;
+
+  letter-spacing: 3px;
+
+  text-transform: uppercase;
+
+  opacity: .75;
+
+}
+
+.guest-name {
+
+  margin-top: 10px;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 27px;
+
+  font-weight: 400;
+
+}
+
+.primary-button {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-height: 44px;
+
+  margin-top: 32px;
+
+  padding: 0 28px;
+
+  border: 1px solid var(--gold);
+
+  border-radius: 0;
+
+  background: var(--brown-dark);
+
+  color: white;
+
+  font-family: "Montserrat", sans-serif;
+
+  font-size: 8px;
+
+  font-weight: 500;
+
+  letter-spacing: 2.5px;
+
+  cursor: pointer;
+
+  transition: all .25s ease;
+
+}
+
+.primary-button:hover {
+
+  background: var(--gold);
+
+  border-color: var(--gold);
+
+}
+
+.opening .primary-button {
+
+  background: rgba(48,35,29,.75);
+
+  border-color: rgba(255,255,255,.55);
+
+}
+
+.opening .primary-button:hover {
+
+  background: rgba(255,255,255,.15);
+
+}
+
+/* =========================================
+
+   MUSIC
+
+========================================= */
+
+.music-button {
+
+  position: fixed;
+
+  right: max(18px, calc((100vw - 520px) / 2 - 52px));
+
+  bottom: 22px;
+
+  z-index: 100;
+
+  width: 40px;
+
+  height: 40px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border: 1px solid var(--gold);
+
+  border-radius: 50%;
+
+  background: rgba(245,239,230,.95);
+
+  color: var(--brown);
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 19px;
+
+  cursor: pointer;
+
+}
+
+@media (max-width: 600px) {
+
+  .music-button {
+
+    right: 18px;
+
+  }
+
+}
+
+/* =========================================
+
+   COMMON
+
+========================================= */
+
+.eyebrow,
+
+.section-label {
+
+  font-family: "Montserrat", sans-serif;
+
+  font-size: 8px;
+
+  font-weight: 500;
+
+  letter-spacing: 4px;
+
+  text-transform: uppercase;
+
+  color: var(--gold);
+
+}
+
+.hero-section {
+
+  min-height: 92vh;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+
+  background: var(--cream-light);
+
+}
+
+.hero-title {
+
+  margin-top: 22px;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 78px;
+
+  font-weight: 300;
+
+  line-height: .75;
+
+  letter-spacing: -3px;
+
+}
+
+.hero-title span {
+
+  display: block;
+
+  margin: 13px 0;
+
+  font-size: 31px;
+
+  line-height: 1;
+
+  letter-spacing: 0;
+
+}
+
+.hero-date {
+
+  margin-top: 38px;
+
+  font-size: 9px;
+
+  letter-spacing: 5px;
+
+  text-transform: uppercase;
+
+}
+
+.hero-line {
+
+  width: 45px;
+
+  height: 1px;
+
+  margin: 22px 0;
+
+  background: var(--gold);
+
+}
+
+.hero-location {
+
+  max-width: 280px;
+
+  font-size: 9px;
+
+  line-height: 1.8;
+
+  color: var(--brown-light);
+
+}
+
+/* =========================================
+
+   INTRO
+
+========================================= */
+
+.intro-section {
+
+  background: var(--cream);
+
+}
+
+.intro-section h2 {
+
+  margin-top: 25px;
+
+  font-size: 42px;
+
+  line-height: .98;
+
+}
+
+.intro-section > p:last-child {
+
+  max-width: 400px;
+
+  margin-top: 27px;
+
+  font-size: 11px;
+
+  line-height: 1.9;
+
+  color: var(--brown-light);
+
+}
+
+/* =========================================
+
+   COUNTDOWN
+
+========================================= */
+
+.countdown-section {
+
+  padding-top: 70px;
+
+  padding-bottom: 70px;
+
+  text-align: center;
+
+  background: var(--cream-dark);
+
+}
+
+.countdown-section h2 {
+
+  margin-top: 18px;
+
+  font-size: 50px;
+
+  line-height: 1;
+
+}
+
+.countdown {
+
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  margin-top: 48px;
+
+}
+
+.countdown div {
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  min-width: 0;
+
+}
+
+.countdown strong {
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 38px;
+
+  font-weight: 400;
+
+  line-height: 1;
+
+}
+
+.countdown span {
+
+  margin-top: 8px;
+
+  font-size: 7px;
+
+  letter-spacing: 1.8px;
+
+  text-transform: uppercase;
+
+  color: var(--brown-light);
+
+}
+
+/* =========================================
+
+   COUPLE
+
+========================================= */
+
+.couple-section {
+
+  background: var(--cream-light);
+
+}
+
+.couple-section > h2 {
+
+  margin-top: 25px;
+
+  font-size: 55px;
+
+  line-height: .9;
+
+}
+
+.couple-card {
+
+  margin-top: 48px;
+
+  padding: 38px 27px;
+
+  border: 1px solid var(--border);
+
+  text-align: center;
+
+}
+
+.couple-label {
+
+  color: var(--gold);
+
+  font-size: 8px;
+
+  letter-spacing: 3px;
+
+}
+
+.couple-card h3 {
+
+  margin-top: 17px;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 32px;
+
+  font-weight: 400;
+
+  line-height: 1;
+
+}
+
+.couple-card p:last-child {
+
+  margin-top: 14px;
+
+  font-size: 9px;
+
+  line-height: 1.8;
+
+  color: var(--brown-light);
+
+}
+
+.couple-divider {
+
+  margin: 26px 0;
+
+  color: var(--gold);
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 28px;
+
+}
+
+/* =========================================
+   COUPLE PROFILE
+========================================= */
+
+.couple-section {
+  background: var(--cream-light);
+  text-align: center;
+}
+
+.couple-section > .section-label {
+  margin-bottom: 55px;
+}
+
+.person-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.person-label {
+  font-family: "Montserrat", sans-serif;
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.portrait-frame {
+  position: relative;
+  width: 285px;
+  height: 430px;
+  margin-top: 25px;
+  overflow: hidden;
+  border: 6px solid var(--gold);
+  border-radius: 50% 50% 42% 42%;
+  background: var(--cream-dark);
+}
+
+.portrait-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  pointer-events: none;
+}
+
+.portrait-frame img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+.person-profile h3 {
+  margin-top: 28px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 39px;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--brown-dark);
+}
+
+.person-parents {
+  margin-top: 17px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 17px;
+  line-height: 1.35;
+  color: var(--brown);
+}
+
+.couple-symbol {
+  margin: 55px 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 54px;
+  font-weight: 300;
+  color: var(--gold);
+}
+
+/* =========================================
+
+   STORY
+
+========================================= */
+
+.story-section {
+
+  background: var(--cream);
+
+}
+
+.story-section > h2 {
+
+  margin-top: 24px;
+
+  font-size: 52px;
+
+  line-height: .9;
+
+}
+
+.story-timeline {
+
+  position: relative;
+
+  margin-top: 60px;
+
+}
+
+.story-timeline::before {
+
+  content: "";
+
+  position: absolute;
+
+  left: 17px;
+
+  top: 5px;
+
+  bottom: 5px;
+
+  width: 1px;
+
+  background: var(--border);
+
+}
+
+.story-item {
+
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns: 36px 1fr;
+
+  column-gap: 25px;
+
+  margin-bottom: 58px;
+
+}
+
+.story-item:last-child {
+
+  margin-bottom: 0;
+
+}
+
+.story-number {
+
+  position: relative;
+
+  z-index: 2;
+
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: center;
+
+  background: var(--cream);
+
+  padding-top: 2px;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 16px;
+
+  color: var(--brown-light);
+
+}
+
+.story-item h3 {
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 28px;
+
+  font-weight: 500;
+
+}
+
+.story-item p {
+
+  margin-top: 9px;
+
+  font-size: 10px;
+
+  line-height: 1.8;
+
+  color: var(--brown-light);
+
+}
+
+/* =========================================
+
+   GALLERY
+
+========================================= */
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 40px;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 240px;
+  display: block;
+  object-fit: cover;
+  border-radius: 2px;
+}
+
+.gallery-grid img:first-child {
+  grid-column: 1 / -1;
+  height: 360px;
+}
+
+.gallery-grid img:last-child {
+  grid-column: 1 / -1;
+  height: 300px;
+}
+
+/* =========================================
+
+   EVENT
+
+========================================= */
+
+.event-section {
+
+  background: var(--cream);
+
+  padding-left: 0;
+
+  padding-right: 0;
+
+}
+
+.event-section > .section-label,
+
+.event-section > h2 {
+
+  margin-left: 42px;
+
+  margin-right: 42px;
+
+}
+
+.event-section > h2 {
+
+  margin-top: 22px;
+
+  text-align: center;
+
+  font-size: 55px;
+
+  line-height: .9;
+
+}
+
+.event-card {
+
+  margin-top: 55px;
+
+  padding: 0 42px 52px;
+
+  border-bottom: 1px solid var(--border);
+
+}
+
+.event-card + .event-card {
+
+  padding-top: 52px;
+
+}
+
+.event-type {
+
+  color: var(--gold);
+
+  font-size: 8px;
+
+  letter-spacing: 4px;
+
+}
+
+.event-card h3 {
+
+  margin-top: 27px;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 30px;
+
+  font-weight: 400;
+
+}
+
+.event-time {
+
+  margin-top: 8px;
+
+  color: var(--brown-light);
+
+  font-size: 9px;
+
+}
+
+.event-address {
+
+  max-width: 330px;
+
+  margin-top: 18px;
+
+  font-size: 9px;
+
+  line-height: 1.8;
+
+  color: var(--brown-light);
+
+}
+
+.outline-button {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-height: 40px;
+
+  margin-top: 20px;
+
+  padding: 0 22px;
+
+  border: 1px solid var(--gold);
+
+  border-radius: 0;
+
+  background: transparent;
+
+  color: var(--brown);
+
+  font-family: "Montserrat", sans-serif;
+
+  font-size: 8px;
+
+  font-weight: 500;
+
+  letter-spacing: 2px;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition: all .25s ease;
+
+}
+
+.outline-button:hover {
+
+  background: var(--gold);
+
+  color: white;
+
+}
+
+/* =========================================
+
+   GIFT
+
+========================================= */
+
+.gift-section {
+
+  background: var(--cream-dark);
+
+}
+
+.gift-section h2 {
+
+  margin-top: 23px;
+
+  font-size: 52px;
+
+  line-height: .9;
+
+}
+
+.gift-section > p:not(.section-label) {
+
+  margin-top: 28px;
+
+  font-size: 10px;
+
+  line-height: 1.8;
+
+  color: var(--brown-light);
+
+}
+
+.gift-card {
+
+  margin-top: 35px;
+
+  padding: 32px 24px;
+
+  border: 1px solid var(--border);
+
+  text-align: center;
+
+}
+
+.gift-card p {
+
+  font-size: 8px;
+
+  letter-spacing: 3px;
+
+}
+
+.gift-card strong {
+
+  display: block;
+
+  margin-top: 15px;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 31px;
+
+  font-weight: 400;
+
+}
+
+.gift-card span {
+
+  display: block;
+
+  margin-top: 6px;
+
+  font-size: 9px;
+
+  color: var(--brown-light);
+
+}
+
+.gift-card .outline-button {
+
+  margin-top: 24px;
+
+}
+
+/* =========================================
+
+   RSVP
+
+========================================= */
+
+.rsvp-section {
+
+  background: var(--cream-light);
+
+}
+
+.rsvp-section h2 {
+
+  margin-top: 23px;
+
+  font-size: 55px;
+
+  line-height: .9;
+
+}
+
+.rsvp-section > p:not(.section-label) {
+
+  margin-top: 28px;
+
+  font-size: 10px;
+
+  line-height: 1.8;
+
+  color: var(--brown-light);
+
+}
+
+.rsvp-form,
+
+.wish-form {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 12px;
+
+  margin-top: 35px;
+
+}
+
+.rsvp-form input,
+
+.rsvp-form select,
+
+.rsvp-form textarea,
+
+.wish-form input,
+
+.wish-form textarea {
+
+  width: 100%;
+
+  padding: 15px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 0;
+
+  outline: none;
+
+  background: rgba(255,255,255,.45);
+
+  color: var(--brown-dark);
+
+  font-family: "Montserrat", sans-serif;
+
+  font-size: 9px;
+
+  transition: border-color .2s ease;
+
+}
+
+.rsvp-form input:focus,
+
+.rsvp-form select:focus,
+
+.rsvp-form textarea:focus,
+
+.wish-form input:focus,
+
+.wish-form textarea:focus {
+
+  border-color: var(--gold);
+
+}
+
+.rsvp-form textarea,
+
+.wish-form textarea {
+
+  resize: vertical;
+
+  min-height: 105px;
+
+}
+
+.rsvp-form input::placeholder,
+
+.rsvp-form textarea::placeholder,
+
+.wish-form input::placeholder,
+
+.wish-form textarea::placeholder {
+
+  color: #9d9187;
+
+}
+
+.rsvp-form .primary-button,
+
+.wish-form .outline-button {
+
+  width: 100%;
+
+  margin-top: 5px;
+
+}
+
+.form-error {
+
+  padding: 11px;
+
+  background: #f4e2df;
+
+  color: #8c4840;
+
+  font-size: 9px;
+
+  line-height: 1.6;
+
+}
+
+.form-success {
+
+  padding: 13px;
+
+  border: 1px solid var(--border);
+
+  background: rgba(255,255,255,.45);
+
+  color: var(--brown);
+
+  font-size: 9px;
+
+  line-height: 1.7;
+
+}
+
+/* =========================================
+
+   WISHES
+
+========================================= */
+
+.wishes-section {
+
+  background: var(--cream);
+
+}
+
+.wishes-section h2 {
+
+  margin-top: 23px;
+
+  font-size: 52px;
+
+  line-height: .9;
+
+}
+
+.wish-list {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 12px;
+
+  margin-top: 45px;
+
+  max-height: 500px;
+
+  overflow-y: auto;
+
+}
+
+.wish-item {
+
+  padding: 20px;
+
+  border: 1px solid var(--border);
+
+  background: rgba(255,255,255,.35);
+
+}
+
+.wish-item strong {
+
+  display: block;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 21px;
+
+  font-weight: 500;
+
+}
+
+.wish-item p {
+
+  margin-top: 8px;
+
+  font-size: 9px;
+
+  line-height: 1.8;
+
+  color: var(--brown-light);
+
+}
+
+.empty-wishes {
+
+  padding: 25px 10px;
+
+  text-align: center;
+
+  color: var(--brown-light);
+
+  font-size: 9px;
+
+}
+
+/* =========================================
+
+   CLOSING
+
+========================================= */
+
+.closing-section {
+
+  min-height: 80vh;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+
+  background: var(--brown-dark);
+
+  color: white;
+
+}
+
+.closing-section .section-label {
+
+  color: var(--gold-light);
+
+}
+
+.closing-section h2 {
+
+  margin-top: 30px;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 72px;
+
+  font-weight: 300;
+
+  line-height: .75;
+
+  color: white;
+
+}
+
+.closing-section h2 span {
+
+  display: block;
+
+  margin: 14px 0;
+
+  font-size: 28px;
+
+}
+
+.closing-section > p:not(.section-label):not(.closing-date) {
+
+  max-width: 300px;
+
+  margin-top: 42px;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 21px;
+
+  line-height: 1.3;
+
+  color: #ddd0c2;
+
+}
+
+.closing-line {
+
+  width: 45px;
+
+  height: 1px;
+
+  margin-top: 35px;
+
+  background: var(--gold);
+
+}
+
+.closing-date {
+
+  margin-top: 18px;
+
+  font-size: 8px;
+
+  letter-spacing: 4px;
+
+  text-transform: uppercase;
+
+  color: #cdbda9;
+
+}
+
+/* =========================================
+
+   MOBILE
+
+========================================= */
+
+@media (max-width: 520px) {
+
+  .main-content {
+
+    min-height: 100vh;
+
+  }
+
+  section {
+
+    padding-left: 28px;
+
+    padding-right: 28px;
+
+  }
+
+  .hero-title {
+
+    font-size: 68px;
+
+  }
+
+  .intro-section h2 {
+
+    font-size: 37px;
+
+  }
+
+  .countdown-section h2 {
+
+    font-size: 42px;
+
+  }
+
+  .couple-section > h2 {
+
+    font-size: 48px;
+
+  }
+
+  .story-section > h2 {
+
+    font-size: 46px;
+
+  }
+
+  .event-section > h2 {
+
+    font-size: 48px;
+
+  }
+
+  .gift-section h2 {
+
+    font-size: 46px;
+
+  }
+
+  .rsvp-section h2 {
+
+    font-size: 48px;
+
+  }
+
+  .wishes-section h2 {
+
+    font-size: 46px;
+
+  }
+
+  .event-section > .section-label,
+
+  .event-section > h2 {
+
+    margin-left: 28px;
+
+    margin-right: 28px;
+
+  }
+
+  .event-card {
+
+    padding-left: 28px;
+
+    padding-right: 28px;
+
+  }
+
+  .gallery-section .section-label,
+
+  .gallery-section > h2 {
+
+    margin-left: 28px;
+
+    margin-right: 28px;
+
+  }
+}
+
+@media (max-width: 380px) {
+
+  section {
+
+    padding-left: 22px;
+
+    padding-right: 22px;
+
+  }
+
+  .opening h1 {
+
+    font-size: 55px;
+
+  }
+
+  .hero-title {
+
+    font-size: 59px;
+
+  }
+
+  .countdown strong {
+
+    font-size: 31px;
+
+  }
+
+  .countdown span {
+
+    font-size: 6px;
+
+  }
+
+  .couple-card {
+
+    padding-left: 20px;
+
+    padding-right: 20px;
+
+  }
+
+  .couple-card h3 {
+
+    font-size: 27px;
+
+  }
+
+  .portrait-frame {
+    width: 245px;
+    height: 370px;
+  }
+
+  .person-profile h3 {
+    font-size: 34px;
+  }
+
+  .person-parents {
+    font-size: 15px;
+  }
+
+  .story-item {
+
+    grid-template-columns: 30px 1fr;
+
+    column-gap: 17px;
+
+  }
+
+  .story-timeline::before {
+
+    left: 14px;
+
+  }
+
+  .story-item h3 {
+
+    font-size: 25px;
+
+  }
+
+  .story-item p {
+
+    font-size: 9px;
+
+  }
+
+}
+
+/* =========================================
+
+   WEDDING GIFT OPTIONS
+
+========================================= */
+
+.gift-options {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 14px;
+
+  margin-top: 35px;
+
+}
+
+.gift-card {
+
+  margin-top: 0;
+
+  padding: 30px 22px;
+
+  border: 1px solid var(--border);
+
+  background: rgba(255, 255, 255, .28);
+
+  text-align: center;
+
+}
+
+.gift-bank {
+
+  font-size: 8px !important;
+
+  letter-spacing: 3px;
+
+  color: var(--gold) !important;
+
+}
+
+.gift-card strong {
+
+  display: block;
+
+  margin-top: 14px;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 31px;
+
+  font-weight: 400;
+
+  letter-spacing: 1px;
+
+}
+
+.gift-card span {
+
+  display: block;
+
+  margin-top: 7px;
+
+  font-size: 9px;
+
+  line-height: 1.7;
+
+  color: var(--brown-light);
+
+}
+
+.gift-card .outline-button {
+
+  margin-top: 22px;
+
+}
+
+.gift-delivery-card {
+
+  padding-top: 34px;
+
+  padding-bottom: 34px;
+
+}
+
+.gift-icon {
+
+  margin-top: 16px;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 34px;
+
+  color: var(--gold);
+
+}
+
+.gift-delivery-card span {
+
+  max-width: 270px;
+
+  margin-left: auto;
+
+  margin-right: auto;
+
 }
