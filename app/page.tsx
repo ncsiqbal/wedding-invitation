@@ -104,7 +104,7 @@ type Wish = {
 
 export default function Home() {
   const [opened, setOpened] = useState(false);
-
+  const [guestName, setGuestName] = useState("");
   const [countdown, setCountdown] = useState({
     days: 0,
     hours: 0,
@@ -132,8 +132,14 @@ export default function Home() {
   const [wishError, setWishError] = useState("");
 
   useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get("to");
 
+    if (name) {
+      setGuestName(name);
+    }
     loadWishes();
+
   }, []);
 
   useEffect(() => {
@@ -314,9 +320,21 @@ export default function Home() {
 
             <div className="opening-line" />
 
+            {guestName ? (
+              <>
+                <p className="guest-label">
+                  Kepada Yth.
+                </p>
+
+                <p className="guest-name">
+                  {guestName}
+                </p>
+              </>
+            ) : (
               <p className="opening-date">
                 {wedding.weddingDate}
               </p>
+            )}
 
             <button
               className="primary-button"
